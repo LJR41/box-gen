@@ -1,23 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
+import {useState} from 'react';
+import AddColor from './components/AddColor';
+import DisplayColor from './components/DisplayColor';
 
 function App() {
+  // a variable to be passed down to children
+  const [currentColor, setCurrentColor] =useState([])
+  // a function for the child to change variable above ^
+  const selectedColor = (showColor) => {
+    setCurrentColor([...currentColor,showColor])
+
+
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Welcome</h1>
+      <AddColor newColor = {selectedColor}></AddColor>
+      <DisplayColor current ={currentColor}></DisplayColor>
     </div>
   );
 }
